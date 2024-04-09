@@ -15,6 +15,7 @@ public class Main {
 		}else {
 			System.out.println("El número ingresado es par. El triple del nro es: " + nro * 3);
 		}
+		sc.close();
 	}
 
 }
