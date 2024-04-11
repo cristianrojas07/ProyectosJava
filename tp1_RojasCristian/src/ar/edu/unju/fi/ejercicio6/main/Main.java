@@ -59,7 +59,7 @@ public class Main {
 		System.out.print("Ingrese fecha nacimiento (dd/mm/yyyy): ");
 		fechaNacString = sc.nextLine();
 		fechaNac = LocalDate.parse(fechaNacString, formatter);
-		
+		sc.close();
 		Persona persona3 = new Persona(dni, nombre, fechaNac);
 		System.out.println(persona3.mostrarDatos());
 	}
