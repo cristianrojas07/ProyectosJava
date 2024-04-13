@@ -33,6 +33,7 @@ public class Main {
 		persona.setFechaNacimiento(fechaNacimiento);
 		persona.setNombre(nombre);
 		
+		System.out.println("");
 		System.out.println(persona);
 		System.out.println("Edad: " + persona.calcularEdad() + " años");
 		System.out.println("Signo del zodiaco: " + persona.obtenerSignoZodiaco());
