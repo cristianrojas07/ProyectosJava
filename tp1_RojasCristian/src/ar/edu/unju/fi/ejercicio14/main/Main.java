@@ -22,7 +22,7 @@ public class Main {
 		int suma = 0;
 		for (int i = 0; i < arrayInt.length; i++) {
 			int valor = arrayInt[i];
-			System.out.println("Posición: " + i + " - Valor: " + valor);
+			System.out.println("Posición: " + (i+1) + " - Valor: " + valor);
 			suma += valor;
 		}
 		
