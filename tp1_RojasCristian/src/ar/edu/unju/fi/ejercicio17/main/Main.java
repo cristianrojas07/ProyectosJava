@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import ar.edu.unju.fi.ejercicio17.constantes.Posicion;
 import ar.edu.unju.fi.ejercicio17.model.Jugador;
+import ar.edu.unju.fi.ejercicio18.model.DestinoTuristico;
 
 public class Main {
 
@@ -137,10 +138,8 @@ public class Main {
 					listJugadores.add(nuevoJugador);
 					break;
 				case 2:
-					if(listJugadores.size() == 0) {
-						System.out.println("\nNo existen jugadores agregados. Por favor de de alta un jugador");
-						break;
-					}
+					if(!ListaTieneElementos(listJugadores)) break;
+					
 					boolean encontro = false;
 					System.out.print("\nIngrese nombre del jugador a buscar: ");
 					nombre = sc.nextLine();
@@ -157,10 +156,7 @@ public class Main {
 					if(!encontro) System.out.println("No se encontró el jugador: " + nombre + " " + apellido);
 					break;
 				case 3:
-					if(listJugadores.size() == 0) {
-						System.out.println("\nNo existen jugadores agregados. Por favor de de alta un jugador");
-						break;
-					}
+					if(!ListaTieneElementos(listJugadores)) break;
 					
 					listJugadores.sort(Comparator.comparing(Jugador::getApellido));
 					System.out.println("");
@@ -169,10 +165,8 @@ public class Main {
 					}
 					break;
 				case 4:
-					if(listJugadores.size() == 0) {
-						System.out.println("\nNo existen jugadores agregados. Por favor de de alta un jugador");
-						break;
-					}
+					if(!ListaTieneElementos(listJugadores)) break;
+					
 					encontro = false;
 					System.out.print("\nIngrese nombre del jugador a buscar: ");
 					nombre = sc.nextLine();
@@ -282,10 +276,8 @@ public class Main {
 					
 					break;
 				case 5:
-					if(listJugadores.size() == 0) {
-						System.out.println("\nNo existen jugadores agregados. Por favor de de alta un jugador");
-						break;
-					}
+					if(!ListaTieneElementos(listJugadores)) break;
+					
 					encontro = false;
 					System.out.print("\nIngrese nombre del jugador a eliminar: ");
 					nombre = sc.nextLine();
@@ -297,7 +289,7 @@ public class Main {
 						Jugador jugador = (Jugador)iterator.next();
 						if(jugador.getNombre().equals(nombre) && jugador.getApellido().equals(apellido)) {
 							System.out.println("\nSe va a eliminar al jugador: " + nombre + " " + apellido);
-							listJugadores.remove(jugador);
+							iterator.remove();
 							encontro = true;
 							System.out.println("Jugador eliminado.");
 							break;
@@ -310,10 +302,7 @@ public class Main {
 					System.out.println("\nCantidad total de jugadores: " + listJugadores.size());
 					break;
 				case 7:
-					if(listJugadores.size() == 0) {
-						System.out.println("\nNo existen jugadores agregados. Por favor de de alta un jugador");
-						break;
-					}
+					if(!ListaTieneElementos(listJugadores)) break;
 					
 					System.out.print("\nIngrese la nacionalidad a buscar: ");
 					nacionalidad = sc.nextLine();
@@ -327,9 +316,8 @@ public class Main {
 					System.out.println("Cantidad de jugadores de nacionalidad: " + nacionalidad + " - Total: " + suma);
 					break;
 				case 8:
-					System.out.println("\nEl programa ha finalizado su ejecución.");
-					System.exit(0);
-					break;
+					System.out.println("Saliendo del programa...");
+                    break;
 				default:
 					System.out.println("\nElija una opción entre [1-8]");
 					break;
@@ -339,5 +327,13 @@ public class Main {
 		
 		sc.close();
 	}
-
+	
+	private static boolean ListaTieneElementos(ArrayList<Jugador> jugadores) {
+    	if(jugadores.size() == 0) {
+    		System.out.println("\nNo existen jugadores agregados. Por favor dé de alta un jugador");
+			return false;
+		}
+    	
+    	return true;
+    }
 }
